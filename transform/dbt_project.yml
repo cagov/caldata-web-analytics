@@ -1,10 +1,10 @@
 # Project settings
-name: caldata_user_journey_tracking
+name: dse_snowflake
 version: "1.0.0"
 config-version: 2
 
 # This setting configures which "profile" dbt uses for this project.
-profile: default
+profile: caldata_user_journey_tracking
 
 # These configurations specify where dbt should look for different types of files.
 # The `source-paths` config, for example, states that models in this project can be
