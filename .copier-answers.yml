@@ -1,7 +1,7 @@
 # Changes here will be overwritten by Copier
 _commit: 4a2fff5
 _src_path: git@github.com:cagov/caldata-infrastructure-template.git
-dbt_profile_name: caldata_user_journey_tracking
+dbt_profile_name: dse_snowflake
 dbt_target: Snowflake
 email_address: aeri.shan@innovation.ca.gov
 friendly_project_name: User Journey Tracking
