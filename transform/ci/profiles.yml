@@ -3,7 +3,7 @@ config:
   use_colors: true
   warn_error: true
 
-caldata_user_journey_tracking:
+dse_snowflake:
   target: dev
   outputs:
     dev:
