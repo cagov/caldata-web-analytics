@@ -100,7 +100,7 @@ from the dbt project root directory (`transform`).
 A minimal version of a `profiles.yml` for dbt development with is:
 
 ```yml
-caldata_user_journey_tracking:
+dse_snowflake:
   target: dev
   outputs:
     dev:

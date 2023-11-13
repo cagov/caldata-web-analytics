@@ -3,7 +3,7 @@ config:
   use_colors: true
   warn_error: true
 
-caldata_user_journey_tracking:
+dse_snowflake:
   target: dev
   outputs:
     dev:
@@ -16,4 +16,15 @@ caldata_user_journey_tracking:
       warehouse: REPORTING_XS_DEV
       database: ANALYTICS_DEV
       schema: ci_should_not_create_this_schema
+      threads: 4
+    prd:
+      type: snowflake
+
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      private_key_path: "{{ env_var('SNOWFLAKE_PRIVATE_KEY_PATH') }}"
+      role: READER_PRD
+      warehouse: REPORTING_XS_PRD
+      database: ANALYTICS_PRD
+      schema: ANALYTICS
       threads: 4
