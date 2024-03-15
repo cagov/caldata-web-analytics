@@ -34,5 +34,3 @@ sources:
     tables:
       - name: BENEFITS_RECOMMENDATION_API_PRODUCTION_EVENTS_TABLE_PIGRTV_2_DYWTM
         description: "Custom benefits recommender widget data"
-
-
