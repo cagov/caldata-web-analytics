@@ -1,8 +1,9 @@
 models:
   - name: stg_ga_statewide
     description: >
-      Google Analytics data from the state-wide property that has been flattened from its original
-      JSON form. Columns may be documented here but not ultimately SELECT-ed in the model.
+      Google Analytics data from the state-wide property that has been flattened from
+      its original JSON form. Columns may be documented here but not ultimately
+      SELECT-ed in the model.
     columns:
       - name: EVENT_DATE
         description: The date when the event was logged
@@ -13,13 +14,15 @@ models:
       - name: EVENT_PARAMS
         description: Event parameter keys and values associated with the event
       - name: EVENT_PREVIOUS_TIMESTAMP
-        description: The time (in microseconds, UTC) when the event was previously logged.
+        description: >
+          The time (in microseconds, UTC) when the event was previously logged.
       - name: EVENT_VALUE_IN_USD
-        description:  The event's "value" parameter (converted to USD)
+        description: The event's "value" parameter (converted to USD)
       - name: EVENT_BUNDLE_SEQUENCE_ID
         description: The sequential ID of the bundle in which these events were uploaded
       - name: EVENT_SERVER_TIMESTAMP_OFFSET
-        description: Timestamp offset between collection time and upload time (in micros)
+        description: >
+          Timestamp offset between collection time and upload time (in micros)
       - name: USER_ID
         description: ID assigned to a user, has to be set by GA site code
       - name: USER_PSEUDO_ID
@@ -30,7 +33,9 @@ models:
       - name: USER_PROPERTIES
         description: User property keys and values associated with the event
       - name: USER_FIRST_TOUCH_TIMESTAMP
-        description: The time (in microseconds) at which the user first opened the app or visited the site
+        description: >
+          The time (in microseconds) at which the user first opened the app or visited
+          the site
       - name: USER_LTV_REVENUE
       - name: USER_LTV_CURRENCY
       - name: DEVICE_CATEGORY
@@ -44,7 +49,8 @@ models:
           The device marketing name (ex: Galaxy S20)
       - name: DEVICE_MOBILE_OS_HARDWARE_MODEL
         description: >
-          The device model information retrieved directly from the operating system (ex: iPhone6)
+          The device model information retrieved directly from the operating system
+          (ex: iPhone6)
       - name: DEVICE_OPERATING_SYSTEM
         description: >
           The operating system of the device (ex: iOS)
@@ -82,15 +88,22 @@ models:
       - name: APP_INFO_FIREBASE_APP_ID
       - name: APP_INFO_INSTALL_SOURCE
       - name: TRAFFIC_SOURCE_NAME
-        description: Campaign name value (utm_campaign) captured on the user's first visit ((organic), (direct))
+        description: >
+          Campaign name value (utm_campaign) captured on the user's first visit
+          ((organic), (direct))
       - name: TRAFFIC_SOURCE_MEDIUM
-        description: Medium value (utm_medium) captured on the user's first visit (organic, email, paid search)
+        description: >
+          Medium value (utm_medium) captured on the user's first visit (organic, email,
+          paid search)
       - name: TRAFFIC_SOURCE_SOURCE
-        description: Source value (utm_source) captured on the user's first visit (google, bing, (direct))
+        description: >
+          Source value (utm_source) captured on the user's first visit (google, bing,
+          (direct))
       - name: STREAM_ID
         description: The numeric ID of the data stream from which the event originated
       - name: PLATFORM
-        description: The data stream platform (Web, iOS or Android) from which the event originated
+        description: >
+          The data stream platform (Web, iOS or Android) from which the event originated
       - name: EVENT_DIMENSIONS_HOSTNAME
         description: Null, use `DEVICE_WEB_INFO_HOSTNAME`
       - name: ECOMMERCE_TOTAL_ITEM_QUANTITY
@@ -120,14 +133,16 @@ models:
       - name: COLLECTED_TRAFFIC_SOURCE_GCLID
         description: The Google click identifier collected with the event
       - name: COLLECTED_TRAFFIC_SOURCE_DCLID
-        description: The Google Marketing Platform (GMP) identifier collected with the event
+        description: >
+          The Google Marketing Platform (GMP) identifier collected with the event
       - name: COLLECTED_TRAFFIC_SOURCE_SRSLTID
         description: The Google Merchant Center identifier collected with the event
 
   - name: int_br_ga_statewide
     description: >
-      Statewide GA data that adds some extra flattening of `EVENT_PARAMETERS` as well as calculated
-      fields specific to Benefits Recommender. See `stg_ga_statewide` for missing column definitions.
+      Statewide GA data that adds some extra flattening of `EVENT_PARAMETERS` as well
+      as calculated fields specific to Benefits Recommender. See `stg_ga_statewide` for
+      additional column definitions.
     columns:
       - name: PAGE_LOCATION
         description: URL of the web page where the event was collected
