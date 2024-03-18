@@ -4,15 +4,15 @@ SELECT
         AS event_timestamp_pst,
     ga.event_name,
     -- Flatten event_parameters, an unordered, variable size array of json objects
-    MAX(CASE WHEN ep.value:KEY = 'page_location' THEN ep.value:VALUE:STRING_VALUE END)
+    MAX(CASE WHEN ep.value:key = 'page_location' THEN ep.value:value:string_value END)
         AS page_location,
-    MAX(CASE WHEN ep.value:KEY = 'page_title' THEN ep.value:VALUE:STRING_VALUE END)
+    MAX(CASE WHEN ep.value:key = 'page_title' THEN ep.value:value:string_value END)
         AS page_title,
-    MAX(CASE WHEN ep.value:KEY = 'page_referrer' THEN ep.value:VALUE:STRING_VALUE END)
+    MAX(CASE WHEN ep.value:key = 'page_referrer' THEN ep.value:value:string_value END)
         AS page_referrer,
-    MAX(CASE WHEN ep.value:KEY = 'link_url' THEN ep.value:VALUE:STRING_VALUE END)
+    MAX(CASE WHEN ep.value:key = 'link_url' THEN ep.value:value:string_value END)
         AS link_url,
-    MAX(CASE WHEN ep.value:KEY = 'link_domain' THEN ep.value:VALUE:STRING_VALUE END)
+    MAX(CASE WHEN ep.value:key = 'link_domain' THEN ep.value:value:string_value END)
         AS link_domain,
     CASE
         -- Classifications below taken from Looker Studio report
@@ -54,11 +54,11 @@ SELECT
     --ga.DEVICE_WEB_INFO_BROWSER,
     --ga.DEVICE_WEB_INFO_BROWSER_VERSION,
     ga.device_web_info_hostname,
-    ga.geo_continent,
+    --ga.geo_continent,
     ga.geo_country,
     ga.geo_region,
     ga.geo_city,
-    ga.geo_sub_continent,
+    --ga.geo_sub_continent,
     ga.geo_metro,
     --ga.APP_INFO_ID,
     --ga.APP_INFO_VERSION,
@@ -94,4 +94,5 @@ SELECT
     --ga.COLLECTED_TRAFFIC_SOURCE_SRSLTID
 FROM {{ ref('stg_ga_statewide') }} AS ga,
     LATERAL FLATTEN(input => event_params) AS ep
+WHERE ga.collected_traffic_source_manual_campaign_name = 'odibr'
 GROUP BY ALL

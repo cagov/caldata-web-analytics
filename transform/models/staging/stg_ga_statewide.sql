@@ -38,11 +38,11 @@ SELECT
     --RAW:"device"."web_info"."browser_version"::string
     --    AS device_web_info_browser_version,
     RAW:"device"."web_info"."hostname"::string AS DEVICE_WEB_INFO_HOSTNAME,
-    RAW:"geo"."continent"::string AS GEO_CONTINENT,
+    --RAW:"geo"."continent"::string AS GEO_CONTINENT,
     RAW:"geo"."country"::string AS GEO_COUNTRY,
     RAW:"geo"."region"::string AS GEO_REGION,
     RAW:"geo"."city"::string AS GEO_CITY,
-    RAW:"geo"."sub_continent"::string AS GEO_SUB_CONTINENT,
+    --RAW:"geo"."sub_continent"::string AS GEO_SUB_CONTINENT,
     RAW:"geo"."metro"::string AS GEO_METRO,
     --RAW:"app_info"."id"::string AS app_info_id,
     --RAW:"app_info"."version"::string AS app_info_version,
