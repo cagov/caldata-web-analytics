@@ -36,4 +36,4 @@ FROM
 LEFT JOIN {{ ref('click_aliases') }} AS ca ON w.link = ca.url
 
 -- Filter out pilot program data
-WHERE to_date(event_timestamp_pst) >= '2023-11-16'
+WHERE to_date(event_timestamp_pst) >= {{ var('br_widget_start_date') }}
