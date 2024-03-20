@@ -1,0 +1,6 @@
+seeds:
+  - name: click_aliases
+    description: >
+      Establishes mapping of URL to URL "alias" to allow for bucketing of data.
+      The URLs are located on partner websites and, in this context, have been
+      clicked on. Initial CSV taken from Google Sheet created by Regan.
