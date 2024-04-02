@@ -34,3 +34,12 @@ sources:
     tables:
       - name: BENEFITS_RECOMMENDATION_API_PRODUCTION_EVENTS_TABLE_PIGRTV_2_DYWTM
         description: "Custom benefits recommender widget data"
+  - name: tiger_2022
+    database: "{{ env_var('DBT_RAW_DB', 'RAW_PRD') }}"
+    schema: tiger_2022
+    tables:
+      - name: PLACES
+        description: >
+          Census designated place information, cities. Limited to California only.
+      - name: COUNTIES
+        description: "Census county information. Limited to California only."

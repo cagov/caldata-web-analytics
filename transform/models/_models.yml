@@ -138,12 +138,32 @@ models:
       - name: COLLECTED_TRAFFIC_SOURCE_SRSLTID
         description: The Google Merchant Center identifier collected with the event
 
+  - name: stg_tiger_places
+    description: California place (city) information from TIGER census dataset.
+    columns:
+      - name: gnis_code
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_tiger_counties
+    description: California county information from TIGER census dataset.
+    columns:
+      - name: gnis_code
+        tests:
+          - not_null
+          - unique
+
   - name: int_br_ga_statewide
     description: >
       Statewide GA data that adds some extra flattening of `EVENT_PARAMETERS` as well
       as calculated fields specific to Benefits Recommender. See `stg_ga_statewide` for
       additional column definitions.
     columns:
+      - name: ID
+        description: Unique identifier. Generated.
+        tests:
+          - unique
       - name: PAGE_LOCATION
         description: URL of the web page where the event was collected
       - name: PAGE_TITLE
