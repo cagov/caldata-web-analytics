@@ -4,3 +4,14 @@ seeds:
       Establishes mapping of URL to URL "alias" to allow for bucketing of data.
       The URLs are located on partner websites and, in this context, have been
       clicked on. Initial CSV taken from Google Sheet created by Regan.
+
+  - name: city_county_extras
+    description: >
+      A manual city to county mapping to fill in gaps for cities that are reported in
+      Google Analytics but don't appear in TIGER Census data. These cities are either
+      unincorporated or simply have different names than those present in the TIGER
+      data.
+    columns:
+      - name: county
+        tests:
+          - valid_county
