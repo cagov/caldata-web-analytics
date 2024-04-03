@@ -1,31 +1,4 @@
-/*
-    Create city -> county translation where a city maps to the county that shares the
-    most intersecting area with it.
-*/
-WITH city_county_mapping AS (
-    SELECT
-        p.name AS city,
-        p.gnis_code AS city_gnis_code,
-        c.name AS county,
-        c.gnis_code AS county_gnis_code,
-        IFF(
-            p.name IN
-            (
-                SELECT name FROM {{ ref('stg_tiger_places') }}
-                GROUP BY name HAVING COUNT(*) > 1
-            ),
-            1, 0
-        ) AS dupe_city
-    FROM {{ ref('stg_tiger_places') }} AS p
-    CROSS JOIN {{ ref('stg_tiger_counties') }} AS c
-
-    QUALIFY ROW_NUMBER() OVER (
-        PARTITION BY p.gnis_code
-        ORDER BY ST_AREA(ST_INTERSECTION(p.geometry, c.geometry)) DESC NULLS LAST
-    ) = 1
-),
-
-ga_base_data AS (
+WITH ga_base_data AS (
     SELECT
         ga.event_date,
         CONVERT_TIMEZONE('UTC', 'America/Los_Angeles', ga.event_timestamp)
@@ -150,7 +123,7 @@ ga_base_data AS (
 */
 ga_data AS (
     SELECT
-        ROW_NUMBER() OVER (ORDER BY NULL) AS id,
+        SEQ8() AS id,
         *
     FROM ga_base_data
 ),
@@ -164,12 +137,15 @@ ga_data AS (
 ga_data_with_county AS (
     SELECT
         ga.*,
-        ga.geo_region = 'California'
-        AND (NOT ccm.dupe_city OR ga.geo_metro LIKE '%' || ccm.county || '%') AS logic,
+        (
+            ga.geo_region = 'California'
+            AND (NOT ccm.is_dupe_city OR ga.geo_metro LIKE '%' || ccm.county || '%')
+        ) AS logic,
         IFF(logic, ccm.city_gnis_code, NULL) AS geo_city_gnis_code,
         IFF(logic, ccm.county, NULL) AS geo_county,
         IFF(logic, ccm.county_gnis_code, NULL) AS geo_county_gnis_code
-    FROM ga_data AS ga LEFT JOIN city_county_mapping AS ccm ON ga.geo_city = ccm.city
+    FROM ga_data AS ga
+    LEFT JOIN {{ ref('int_city_to_county') }} AS ccm ON ga.geo_city = ccm.city
     QUALIFY (
         ROW_NUMBER() OVER (PARTITION BY ga.id ORDER BY geo_county DESC NULLS LAST)
     ) = 1

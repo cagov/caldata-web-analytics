@@ -174,3 +174,9 @@ models:
         description: The URL of the link clicked
       - name: LINK_DOMAIN
         description: The domain of the link clicked
+
+  - name: int_city_to_county
+    description: >
+      A city to county translation where a city maps to the county that shares the most
+      intersecting area with it. Some cities will *not* have gnis codes due to not
+      being present in Census TIGER dataset.
