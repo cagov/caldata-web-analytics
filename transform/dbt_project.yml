@@ -25,5 +25,7 @@ vars:
   # The date when the benefits recommender widget was put into production
   # (this excludes the pilot program)
   br_widget_start_date: "'2023-11-16'"
+  # Date requested by Regan
+  ga_data_start_date: "'2023-08-16'"
 
 models: {}

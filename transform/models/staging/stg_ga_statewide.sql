@@ -85,5 +85,4 @@ SELECT
 --RAW:"collected_traffic_source"."srsltid"::string AS collected_traffic_source_srsltid
 FROM {{ source('ca_google_analytics', 'ANALYTICS_314711183') }}
 WHERE INGESTION_COMPLETE = TRUE
--- Filter out benefits recommender pilot program data
-AND EVENT_DATE >= {{ var('br_widget_start_date') }}
+AND EVENT_DATE >= {{ var('ga_data_start_date') }}

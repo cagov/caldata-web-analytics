@@ -158,7 +158,8 @@ models:
     description: >
       Statewide GA data that adds some extra flattening of `EVENT_PARAMETERS` as well
       as calculated fields specific to Benefits Recommender. See `stg_ga_statewide` for
-      additional column definitions.
+      additional column definitions. Data is restricted to domains relevant to the
+      Benefits Recommender project (broadbandforall, csb, ftb, wic).
     columns:
       - name: ID
         description: Unique identifier. Generated.
@@ -180,3 +181,14 @@ models:
       A city to county translation where a city maps to the county that shares the most
       intersecting area with it. Some cities will *not* have gnis codes due to not
       being present in Census TIGER dataset.
+
+  - name: mart_sankey_acp
+    description: >
+      Data set up for a Sankey diagram. Numbers are restricted to the ACP portion of
+      the project.
+
+  - name: mart_odibr_ga
+    description: >
+      Google Analytics data meant for use by a dashboard. It represents the subsection
+      of California's GA data that are relevant to the BR project and only includes
+      rows directly related to ODI's BR GA campaign.
