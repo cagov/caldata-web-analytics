@@ -104,8 +104,9 @@ WITH ga_base_data AS (
     FROM {{ ref('stg_ga_statewide') }} AS ga,
         LATERAL FLATTEN(input => event_params) AS ep
 
-    -- Limit data to domains that are relevant to the BR project
-    WHERE ga.collected_traffic_source_manual_campaign_name = 'odibr'
+    -- Limit to data relevant to the BR project
+    WHERE
+        ga.collected_traffic_source_manual_campaign_name = 'odibr'
         OR ga.device_web_info_hostname LIKE '%broadbandforall.cdt.ca.gov'
         OR ga.device_web_info_hostname LIKE '%csd.ca.gov'
         OR ga.device_web_info_hostname LIKE '%ftb.ca.gov'

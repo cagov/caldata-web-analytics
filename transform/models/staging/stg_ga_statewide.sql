@@ -84,5 +84,6 @@ SELECT
 --RAW:"collected_traffic_source"."dclid"::string AS collected_traffic_source_dclid,
 --RAW:"collected_traffic_source"."srsltid"::string AS collected_traffic_source_srsltid
 FROM {{ source('ca_google_analytics', 'ANALYTICS_314711183') }}
-WHERE INGESTION_COMPLETE = TRUE
-AND EVENT_DATE >= {{ var('ga_data_start_date') }}
+WHERE
+    INGESTION_COMPLETE = TRUE
+    AND EVENT_DATE >= {{ var('ga_data_start_date') }}
