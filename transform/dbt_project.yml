@@ -28,4 +28,12 @@ vars:
   # Date requested by Regan
   ga_data_start_date: "'2023-08-16'"
 
-models: {}
+models:
+  dse_snowflake:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+      +database: "{{ env_var('DBT_ANALYTICS_DB', 'ANALYTICS_DEV') }}"
