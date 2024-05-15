@@ -8,10 +8,13 @@ on:
 env:
   DBT_PROFILES_DIR: ci
 
-  PRIVATE_KEY: ${{ SECRETS.SNOWFLAKE_PRIVATE_KEY_DEV }}
   SNOWFLAKE_USER: ${{ SECRETS.SNOWFLAKE_USER_DEV }}
   SNOWFLAKE_ACCOUNT: ${{ SECRETS.SNOWFLAKE_ACCOUNT }}
-  SNOWFLAKE_PRIVATE_KEY_PATH: /tmp/private_key.p8
+  SNOWFLAKE_PRIVATE_KEY: ${{ SECRETS.SNOWFLAKE_PRIVATE_KEY_DEV }}
+  SNOWFLAKE_ROLE: READER_DEV
+  SNOWFLAKE_WAREHOUSE: REPORTING_XS_DEV
+  SNOWFLAKE_DATABASE: ANALYTICS_DEV
+  SNOWFLAKE_SCHEMA: ci_should_not_create_this_schema
 
 defaults:
   run:
@@ -22,10 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        # TODO: once we are on dbt-snowflake 1.5, no need to pipe to a file, we can
-        # just use $SNOWFLAKE_PRIVATE_KEY
-      - name: Set up private key
-        run: echo "$PRIVATE_KEY" > $SNOWFLAKE_PRIVATE_KEY_PATH
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
