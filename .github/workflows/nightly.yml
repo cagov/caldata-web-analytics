@@ -9,8 +9,6 @@ on:
       - main
   # Also allow for manual triggers
   workflow_dispatch:
-  # NOTE: This can be removed once development is complete
-  pull_request:
 
 env:
   DBT_PROFILES_DIR: transform/ci
