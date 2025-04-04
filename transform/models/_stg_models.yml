@@ -100,7 +100,8 @@ models:
           Source value (utm_source) captured on the user's first visit (google, bing,
           (direct))
       - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_SOURCE
-        description: Last-click attribution campaign source value (utm_source) captured on the user's first visit (google, bing,
+        description:
+          Last-click attribution campaign source value (utm_source) captured on the user's first visit (google, bing,
           (direct))
       - name: STREAM_ID
         description: The numeric ID of the data stream from which the event originated

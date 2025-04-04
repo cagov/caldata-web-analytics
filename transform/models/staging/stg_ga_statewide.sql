@@ -52,8 +52,8 @@ SELECT
     RAW:"traffic_source"."name"::string AS TRAFFIC_SOURCE_NAME,
     --RAW:"traffic_source"."medium"::string AS traffic_source_medium,
     RAW:"traffic_source"."source"::string AS TRAFFIC_SOURCE_SOURCE,
-    RAW:session_traffic_source_last_click:manual_campaign:source::string 
-    AS SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_SOURCE,
+    RAW:session_traffic_source_last_click:manual_campaign:source::string
+        AS SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_SOURCE,
     --RAW:"stream_id"::string AS stream_id,
     --RAW:"platform"::string AS platform,
     --RAW:"event_dimensions"."hostname"::string AS event_dimensions_hostname,
