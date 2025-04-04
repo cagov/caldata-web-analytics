@@ -7,7 +7,7 @@ with source_data as (
     from {{ ref('stg_ga_statewide') }} as ga
 ),
 
-key_metrics_la as (
+key_metrics_la as ( -- noqa: ST03
     select
         COUNT(case when event_name = 'page_view' then 1 end) as total_page_views,
         COUNT(distinct user_pseudo_id) as total_users
