@@ -102,7 +102,7 @@ WITH ga_base_data AS (
     --ga.COLLECTED_TRAFFIC_SOURCE_DCLID,
     --ga.COLLECTED_TRAFFIC_SOURCE_SRSLTID
     FROM {{ ref('stg_ga_statewide') }} AS ga,
-        LATERAL FLATTEN(input => event_params) AS ep
+        LATERAL FLATTEN(input => ga.event_params) AS ep
 
     -- Limit to data relevant to the BR project
     WHERE

@@ -3,8 +3,8 @@ _commit: 4a2fff5
 _src_path: git@github.com:cagov/caldata-infrastructure-template.git
 dbt_profile_name: dse_snowflake
 dbt_target: Snowflake
-email_address: aeri.shan@innovation.ca.gov
-friendly_project_name: User Journey Tracking
+email_address: britt.allen@innovation.ca.gov
+friendly_project_name: Web Analytics
 license: MIT
-project_name: caldata-user-journey-tracking
+project_name: caldata-web-analytics
 team_name: DSE
