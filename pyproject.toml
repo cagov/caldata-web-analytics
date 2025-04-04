@@ -1,5 +1,6 @@
 [tool.poetry]
 name = "caldata-web-analytics"
+package-mode = false
 version = "0.1.0"
 description = "\"User Journey Tracking\""
 authors = ["DSE <aeri.shan@innovation.ca.gov>"]
