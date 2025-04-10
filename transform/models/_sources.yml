@@ -2,8 +2,8 @@ version: 2
 
 sources:
   - name: ca_google_analytics
-    database: "{{ env_var('DBT_RAW_DB', 'RAW_PRD') }}"
-    schema: ca_google_analytics
+    database: "{{ env_var('DBT_RAW_DB', 'SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB') }}"
+    schema: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA
     tables:
       - name: ANALYTICS_314711183
         description: "Statewide GA property data"
@@ -19,6 +19,17 @@ sources:
 
       - name: ANALYTICS_322878501
         description: ""
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 5
+            period: day
+          filter: datediff('day', source_table_date, current_timestamp) < 5
+        loaded_at_field: "source_table_date::timestamp"
+      - name: ANALYTICS_471611234
+        description: "Gov Ops(engaged.ca.gov) GA property data"
         freshness:
           warn_after:
             count: 3
