@@ -34,6 +34,12 @@ models:
       +materialized: view
     intermediate:
       +materialized: view
+      engaged_ca:
+        +schema: engaged_ca
+      benefits_recommender:
+        +schema: benefits_recommender
     marts:
       +materialized: table
       +database: "{{ env_var('DBT_ANALYTICS_DB', 'ANALYTICS_DEV') }}"
+      benefits_recommender:
+        +schema: benefits_recommender
