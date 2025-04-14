@@ -85,7 +85,7 @@ SELECT
 --RAW:"collected_traffic_source"."gclid"::string AS collected_traffic_source_gclid,
 --RAW:"collected_traffic_source"."dclid"::string AS collected_traffic_source_dclid,
 --RAW:"collected_traffic_source"."srsltid"::string AS collected_traffic_source_srsltid
-FROM {{ source('SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA', 'ANALYTICS_314711183') }}
+FROM {{ source('ca_google_analytics', 'ANALYTICS_314711183') }}
 WHERE
     INGESTION_COMPLETE = TRUE
     AND EVENT_DATE >= {{ var('ga_data_start_date') }}
