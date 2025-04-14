@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: ca_google_analytics
-    database: "{{ env_var('DBT_RAW_DB', 'SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB') }}"
+    database: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB
     schema: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA
     tables:
       - name: ANALYTICS_314711183
