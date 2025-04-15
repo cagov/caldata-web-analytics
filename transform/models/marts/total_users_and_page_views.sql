@@ -12,8 +12,8 @@ key_metrics as (
     select
         geo_city,
         page_location,
-        COUNT(case when event_name = 'page_view' then 1 end) as total_page_views,
-        COUNT(distinct user_pseudo_id) as total_users
+        count_if(event_name = 'page_view') as total_page_views,
+        count(distinct user_pseudo_id) as total_users
     from source_data
     group by geo_city, page_location
 )

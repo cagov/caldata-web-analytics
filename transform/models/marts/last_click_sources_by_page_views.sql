@@ -10,7 +10,7 @@ last_click_sources_by_page_views as (
     select
         page_location,
         session_traffic_source_last_click_manual_campaign_source as last_click_sources,
-        COUNT(case when event_name = 'page_view' then 1 end) as page_views
+        count_if(event_name = 'page_view') as total_page_views
     from source_data
     group by page_location, last_click_sources
 )
