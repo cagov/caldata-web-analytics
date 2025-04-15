@@ -11,10 +11,10 @@ ga_statewide_event_params_flattened as (
 ),
 
 create_page_location as (
-    select 
+    select
         g.*,
-        case when param_key = 'page_location' then param_value:string_value::text else NULL end as page_location
-    from ga_statewide_event_params_flattened g
+        case when g.param_key = 'page_location' then g.param_value:string_value::text end as page_location
+    from ga_statewide_event_params_flattened as g
 )
 
 select * from create_page_location
