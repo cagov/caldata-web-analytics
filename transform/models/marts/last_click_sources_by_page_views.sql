@@ -16,4 +16,3 @@ last_click_sources_by_page_views as (
 )
 
 select * from last_click_sources_by_page_views
-order by 2 desc

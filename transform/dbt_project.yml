@@ -34,8 +34,6 @@ models:
       +materialized: view
     intermediate:
       +materialized: view
-      engaged_ca:
-        +schema: engaged_ca
       benefits_recommender:
         +schema: benefits_recommender
     marts:

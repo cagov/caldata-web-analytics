@@ -10,15 +10,14 @@ with source_data as (
 cities_by_page_views as (
     select
         geo_city,
-        page_location
-        COUNT(case when event_name = 'page_view' then 1 end) as page_views
+        page_location,
+        count(case when event_name = 'page_view' then 1 end) as page_views
     from source_data
     where
         geo_region = 'California'
-        and LENGTH(TRIM(geo_city)) > 0
+        and length(trim(geo_city)) > 0
         and geo_city != '(not set)'
     group by geo_city, page_location
 )
 
 select * from cities_by_page_views
-order by 3 desc
