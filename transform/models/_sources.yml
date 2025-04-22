@@ -1,12 +1,12 @@
 version: 2
 
 sources:
-  - name: ca_google_analytics
+  - name: CA_GOOGLE_ANALYTICS
     database: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB
     schema: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA
     tables:
-      - name: ANALYTICS_314711183
-        description: "Statewide GA property data"
+      - name: ANALYTICS_314711183__VIEW
+        description: "Statewide GA property view"
         freshness:
           warn_after:
             count: 3

@@ -32,6 +32,8 @@ models:
   dse_snowflake:
     staging:
       +materialized: view
+      google_analytics:
+        +schema: google_analytics
     intermediate:
       +materialized: view
       benefits_recommender:
