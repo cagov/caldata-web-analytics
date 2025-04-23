@@ -13,9 +13,9 @@ with source_data as (
 key_metrics as (
     select
         event_date,
-        any_value(page_location),
-        any_value(geo_region),
-        any_value(geo_city),
+        any_value(page_location) as page_location,
+        any_value(geo_region) as geo_region,
+        any_value(geo_city) as geo_city,
         count_if(event_name = 'page_view') as total_page_views,
         count(distinct user_pseudo_id) as total_users
     from source_data
