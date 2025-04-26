@@ -18,7 +18,7 @@ sources:
         loaded_at_field: "event_date::timestamp"
 
       - name: ANALYTICS_322878501__VIEW
-        description: ""
+        description: "CA State Portal (https://www.ca.gov/) property view"
         freshness:
           warn_after:
             count: 3
