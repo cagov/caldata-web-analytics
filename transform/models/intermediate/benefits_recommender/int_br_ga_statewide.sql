@@ -10,12 +10,12 @@ WITH ga_base_data AS (
         ga.link_domain,
         CASE
         -- Classifications below taken from Looker Studio report
-            WHEN page_location IS NULL THEN NULL
-            WHEN page_location LIKE '%csd.ca.gov%' THEN 'CSD'
-            WHEN page_location LIKE '%broadband%' THEN 'ACP'
-            WHEN page_location LIKE '%myfamily%' THEN 'WIC'
-            WHEN page_location LIKE '%caleitc%' THEN 'CalEITC'
-            WHEN page_location LIKE '%calfile%' THEN 'CalFile'
+            WHEN ga.page_location IS NULL THEN NULL
+            WHEN ga.page_location LIKE '%csd.ca.gov%' THEN 'CSD'
+            WHEN ga.page_location LIKE '%broadband%' THEN 'ACP'
+            WHEN ga.page_location LIKE '%myfamily%' THEN 'WIC'
+            WHEN ga.page_location LIKE '%caleitc%' THEN 'CalEITC'
+            WHEN ga.page_location LIKE '%calfile%' THEN 'CalFile'
             ELSE 'Other'
         END AS page_location_alias,
         --ga.EVENT_PREVIOUS_TIMESTAMP,
