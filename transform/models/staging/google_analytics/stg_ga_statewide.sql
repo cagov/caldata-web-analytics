@@ -1,8 +1,8 @@
 {{ config(
-        materialized='incremental',
-        unique_key=['EVENT_DATE']
-    )
-}}
+    materialized='incremental',
+    incremental_strategy='microbatch',
+    event_time='EVENT_DATE'
+) }}
 
 SELECT
     EVENT_DATE,

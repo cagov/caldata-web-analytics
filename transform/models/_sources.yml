@@ -2,6 +2,8 @@ version: 2
 
 sources:
   - name: CA_GOOGLE_ANALYTICS
+    config:
+      event_time: EVENT_DATE
     database: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB
     schema: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA
     tables:
