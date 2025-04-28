@@ -169,7 +169,7 @@ SELECT
     -- PUBLISHER_AD_UNIT_ID,
     EVENT_PARAMS__FLATTENED,
     -- using regexp_replace() to remove double quotes at start and end
-    regexp_replace(EVENT_PARAMS__FLATTENED:page_location, '^"(.*)"$', '\\1') AS PAGE_LOCATION,
+    trim(EVENT_PARAMS__FLATTENED:page_location, '"') AS PAGE_LOCATION,
     EVENT_PARAMS__FLATTENED:page_title AS PAGE_TITLE,
     EVENT_PARAMS__FLATTENED:page_referrer AS PAGE_REFERRER,
     EVENT_PARAMS__FLATTENED:link_url AS LINK_URL,
