@@ -177,9 +177,3 @@ SELECT
     -- USER_PROPERTIES__FLATTENED,
 
 FROM {{ source('CA_GOOGLE_ANALYTICS', 'ANALYTICS_314711183__VIEW') }}
-WHERE EVENT_DATE >= {{ var('ga_data_start_date') }}
-{% if is_incremental() %}
-        AND EVENT_DATE > (
-            select dateadd(day, -2, max(EVENT_DATE)) from {{ this }}
-        )
-    {% endif %}
