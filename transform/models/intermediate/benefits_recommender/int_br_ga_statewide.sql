@@ -1,36 +1,21 @@
 WITH ga_base_data AS (
     SELECT
         ga.event_date,
-        CONVERT_TIMEZONE('UTC', 'America/Los_Angeles', ga.event_timestamp)
-            AS event_timestamp_pst,
+        CONVERT_TIMEZONE('UTC', 'America/Los_Angeles', ga.event_timestamp) AS event_timestamp_pst,
         ga.event_name,
-        -- Flatten event_params, an unordered, variable size array of json objects
-        MAX(
-            CASE
-                WHEN ep.value:key = 'page_location' THEN ep.value:value:string_value
-            END
-        )
-            AS page_location,
-        MAX(CASE WHEN ep.value:key = 'page_title' THEN ep.value:value:string_value END)
-            AS page_title,
-        MAX(
-            CASE
-                WHEN ep.value:key = 'page_referrer' THEN ep.value:value:string_value
-            END
-        )
-            AS page_referrer,
-        MAX(CASE WHEN ep.value:key = 'link_url' THEN ep.value:value:string_value END)
-            AS link_url,
-        MAX(CASE WHEN ep.value:key = 'link_domain' THEN ep.value:value:string_value END)
-            AS link_domain,
+        ga.page_location,
+        ga.page_title,
+        ga.page_referrer,
+        ga.link_url,
+        ga.link_domain,
         CASE
         -- Classifications below taken from Looker Studio report
-            WHEN page_location IS NULL THEN NULL
-            WHEN page_location LIKE '%csd.ca.gov%' THEN 'CSD'
-            WHEN page_location LIKE '%broadband%' THEN 'ACP'
-            WHEN page_location LIKE '%myfamily%' THEN 'WIC'
-            WHEN page_location LIKE '%caleitc%' THEN 'CalEITC'
-            WHEN page_location LIKE '%calfile%' THEN 'CalFile'
+            WHEN ga.page_location IS NULL THEN NULL
+            WHEN ga.page_location LIKE '%csd.ca.gov%' THEN 'CSD'
+            WHEN ga.page_location LIKE '%broadband%' THEN 'ACP'
+            WHEN ga.page_location LIKE '%myfamily%' THEN 'WIC'
+            WHEN ga.page_location LIKE '%caleitc%' THEN 'CalEITC'
+            WHEN ga.page_location LIKE '%calfile%' THEN 'CalFile'
             ELSE 'Other'
         END AS page_location_alias,
         --ga.EVENT_PREVIOUS_TIMESTAMP,
@@ -101,8 +86,7 @@ WITH ga_base_data AS (
     --ga.COLLECTED_TRAFFIC_SOURCE_GCLID,
     --ga.COLLECTED_TRAFFIC_SOURCE_DCLID,
     --ga.COLLECTED_TRAFFIC_SOURCE_SRSLTID
-    FROM {{ ref('stg_ga_statewide') }} AS ga,
-        LATERAL FLATTEN(input => ga.event_params) AS ep
+    FROM {{ ref('stg_ga_statewide') }} AS ga
 
     -- Limit to data relevant to the BR project
     WHERE

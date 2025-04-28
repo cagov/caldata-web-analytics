@@ -1,12 +1,14 @@
 version: 2
 
 sources:
-  - name: ca_google_analytics
+  - name: CA_GOOGLE_ANALYTICS
+    config:
+      event_time: EVENT_DATE
     database: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_DB
     schema: SNOWFLAKE_CONNECTOR_FOR_GOOGLE_ANALYTICS_SCHEMA
     tables:
-      - name: ANALYTICS_314711183
-        description: "Statewide GA property data"
+      - name: ANALYTICS_314711183__VIEW
+        description: "Statewide GA property view"
         freshness:
           warn_after:
             count: 3
@@ -14,11 +16,11 @@ sources:
           error_after:
             count: 5
             period: day
-          filter: datediff('day', source_table_date, current_timestamp) < 5
-        loaded_at_field: "source_table_date::timestamp"
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
 
-      - name: ANALYTICS_322878501
-        description: ""
+      - name: ANALYTICS_322878501__VIEW
+        description: "CA State Portal (https://www.ca.gov/) property view"
         freshness:
           warn_after:
             count: 3
@@ -26,9 +28,9 @@ sources:
           error_after:
             count: 5
             period: day
-          filter: datediff('day', source_table_date, current_timestamp) < 5
-        loaded_at_field: "source_table_date::timestamp"
-      - name: ANALYTICS_471611234
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
+      - name: ANALYTICS_471611234__VIEW
         description: "Gov Ops(engaged.ca.gov) GA property data"
         freshness:
           warn_after:
@@ -37,8 +39,8 @@ sources:
           error_after:
             count: 5
             period: day
-          filter: datediff('day', source_table_date, current_timestamp) < 5
-        loaded_at_field: "source_table_date::timestamp"
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
   - name: calinnovate_dynamodb
     database: "{{ env_var('DBT_RAW_DB', 'RAW_PRD') }}"
     schema: calinnovate_dynamodb

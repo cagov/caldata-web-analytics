@@ -3,6 +3,11 @@ name: dse_snowflake
 version: "1.0.0"
 config-version: 2
 
+flags:
+  send_anonymous_usage_stats: false
+  use_colors: true
+  warn_error: true
+
 # This setting configures which "profile" dbt uses for this project.
 profile: dse_snowflake
 
@@ -25,17 +30,19 @@ vars:
   # The date when the benefits recommender widget was put into production
   # (this excludes the pilot program)
   br_widget_start_date: "'2023-11-16'"
-  # Date requested by Regan
-  ga_data_start_date: "'2023-08-16'"
+  # First date of the GA4 BigQuery dataset
+  ga_data_start_date: "'2022-10-31'"
 
 models:
   dse_snowflake:
+    +begin: "{{ '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
+    +batch_size: day
     staging:
       +materialized: view
+      google_analytics:
+        +schema: google_analytics
     intermediate:
       +materialized: view
-      engaged_ca:
-        +schema: engaged_ca
       benefits_recommender:
         +schema: benefits_recommender
     marts:
@@ -43,3 +50,5 @@ models:
       +database: "{{ env_var('DBT_ANALYTICS_DB', 'ANALYTICS_DEV') }}"
       benefits_recommender:
         +schema: benefits_recommender
+      google_analytics:
+        +schema: google_analytics
