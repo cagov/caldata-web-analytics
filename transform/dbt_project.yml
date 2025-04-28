@@ -27,6 +27,8 @@ vars:
   br_widget_start_date: "'2023-11-16'"
   # Date requested by Regan
   ga_data_start_date: "'2023-08-16'"
+  incremental_model_look_back: -2
+  dev_model_look_back: -7
 
 models:
   dse_snowflake:

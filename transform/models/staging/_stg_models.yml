@@ -1,5 +1,7 @@
 models:
   - name: stg_ga_statewide
+    config:
+      materialized: incremental
     description: >
       Google Analytics data from the state-wide property that has been flattened from
       its original JSON form. Columns may be documented here but not ultimately

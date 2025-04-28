@@ -1,3 +1,9 @@
+{{ config(
+        materialized='incremental',
+        unique_key=['EVENT_DATE']
+    )
+}}
+
 SELECT
     EVENT_DATE,
     EVENT_TIMESTAMP,
@@ -162,7 +168,8 @@ SELECT
     -- PUBLISHER_AD_SOURCE_NAME,
     -- PUBLISHER_AD_UNIT_ID,
     EVENT_PARAMS__FLATTENED,
-    EVENT_PARAMS__FLATTENED:page_location AS PAGE_LOCATION,
+    -- using regexp_replace() to remove double quotes at start and end
+    regexp_replace(EVENT_PARAMS__FLATTENED:page_location, '^"(.*)"$', '\\1') AS PAGE_LOCATION,
     EVENT_PARAMS__FLATTENED:page_title AS PAGE_TITLE,
     EVENT_PARAMS__FLATTENED:page_referrer AS PAGE_REFERRER,
     EVENT_PARAMS__FLATTENED:link_url AS LINK_URL,
@@ -171,3 +178,8 @@ SELECT
 
 FROM {{ source('CA_GOOGLE_ANALYTICS', 'ANALYTICS_314711183__VIEW') }}
 WHERE EVENT_DATE >= {{ var('ga_data_start_date') }}
+{% if is_incremental() %}
+        AND EVENT_DATE > (
+            select dateadd(day, -2, max(EVENT_DATE)) from {{ this }}
+        )
+    {% endif %}
