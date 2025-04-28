@@ -27,8 +27,6 @@ vars:
   br_widget_start_date: "'2023-11-16'"
   # First date of the GA4 BigQuery dataset
   ga_data_start_date: "'2022-10-31'"
-  incremental_model_look_back: -2
-  dev_model_look_back: -7
 
 models:
   dse_snowflake:
