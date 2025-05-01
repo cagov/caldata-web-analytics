@@ -1,3 +1,9 @@
+{{ config(
+    materialized='incremental',
+    incremental_strategy='microbatch',
+    event_time='EVENT_DATE'
+) }}
+
 with source_data as (
     select
         event_date,
