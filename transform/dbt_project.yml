@@ -45,10 +45,12 @@ models:
       +materialized: view
       benefits_recommender:
         +schema: benefits_recommender
+      google_analytics:
+        +schema: google_analytics
     marts:
       +materialized: table
       +database: "{{ env_var('DBT_ANALYTICS_DB', 'ANALYTICS_DEV') }}"
       benefits_recommender:
         +schema: benefits_recommender
-      google_analytics:
-        +schema: google_analytics
+      engaged_ca:
+        +schema: engaged_ca
