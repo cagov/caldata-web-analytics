@@ -20,4 +20,4 @@ la_totals as (
 
 )
 
-select * from totals, la_totals
+select * from totals, la_totals -- noqa: RF02
