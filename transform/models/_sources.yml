@@ -17,7 +17,7 @@ sources:
             count: 5
             period: day
           filter: datediff('day', event_date, current_timestamp) < 5
-        loaded_at_field: "event_date::timestamp"
+        loaded_at_field: "event_date"
 
       - name: ANALYTICS_322878501__VIEW
         description: "CA State Portal (https://www.ca.gov/) property view"
@@ -29,7 +29,7 @@ sources:
             count: 5
             period: day
           filter: datediff('day', event_date, current_timestamp) < 5
-        loaded_at_field: "event_date::timestamp"
+        loaded_at_field: "event_date"
       - name: ANALYTICS_471611234__VIEW
         description: "Gov Ops(engaged.ca.gov) GA property data"
         freshness:
@@ -40,7 +40,7 @@ sources:
             count: 5
             period: day
           filter: datediff('day', event_date, current_timestamp) < 5
-        loaded_at_field: "event_date::timestamp"
+        loaded_at_field: "event_date"
   - name: calinnovate_dynamodb
     database: "{{ env_var('DBT_RAW_DB', 'RAW_PRD') }}"
     schema: calinnovate_dynamodb
