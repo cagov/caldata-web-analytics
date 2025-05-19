@@ -1,3 +1,9 @@
+{{ config(
+    materialized='incremental',
+    incremental_strategy='microbatch',
+    event_time='EVENT_DATE'
+) }}
+
 WITH ga_base_data AS (
     SELECT
         ga.event_date,

@@ -35,7 +35,7 @@ vars:
 
 models:
   dse_snowflake:
-    +begin: "{{ '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
+    +begin: "{{ '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(5)).isoformat() }}"
     +batch_size: day
     +lookback: 7
     staging:
