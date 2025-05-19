@@ -1,0 +1,34 @@
+models:
+  - name: int_city_to_county
+    description: >
+      A city to county translation where a city maps to the county that shares the most
+      intersecting area with it. Some cities will *not* have gnis codes due to not
+      being present in Census TIGER dataset.
+
+  - name: ga__last_click_sources_by_page_views
+    description: Last click source, website, and pageview data for all ca.gov properties
+    columns:
+      - name: EVENT_DATE
+        description: date user interactions or system events occurred on the website
+      - name: PAGE_LOCATION
+        description: website URL
+      - name: LAST_CLICK_SOURCES
+        description: the origin of traffic to your site using a last-click attribution model
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+
+  - name: ga__total_users_and_page_views
+    description: Website, region, city, pageview, and user data for all ca.gov properties
+    columns:
+      - name: EVENT_DATE
+        description: date user interactions or system events occurred on the website
+      - name: PAGE_LOCATION
+        description: website URL
+      - name: GEO_REGION
+        description: region (State) name.
+      - name: GEO_CITY
+        description: city name
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+      - name: TOTAL_USERS
+        description: total number of people who visited the site

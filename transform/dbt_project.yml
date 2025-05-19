@@ -41,8 +41,12 @@ models:
       +materialized: view
       google_analytics:
         +schema: google_analytics
+      geo:
+        +schema: geo
     intermediate:
       +materialized: view
+      geo:
+        +schema: geo
       benefits_recommender:
         +schema: benefits_recommender
       google_analytics:
