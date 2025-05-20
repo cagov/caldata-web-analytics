@@ -13,5 +13,7 @@ select
 to_date(date_day) as date_day
 from date_range
 where date_day not in (select {{ column_name }} from {{ model }})
+-- the filter below will be removed when our source table is backfilled for those dates
+and date_day != '2025-01-06' and date_day != '2025-01-13' and date_day != '2025-01-14'
 
 {% endtest %}
