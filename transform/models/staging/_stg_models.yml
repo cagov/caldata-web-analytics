@@ -7,6 +7,8 @@ models:
     columns:
       - name: EVENT_DATE
         description: The date when the event was logged
+        tests:
+          - data_gaps
       - name: EVENT_TIMESTAMP
         description: The time (in microseconds, UTC) when the event was logged
       - name: EVENT_NAME
