@@ -1,7 +1,7 @@
 with source_data as (
     select * from {{ ref('ga__last_click_sources_by_page_views') }}
     where
-        event_date > '2025-02-21' -- soft launch date
+        event_date >= '2025-02-21' -- soft launch date
         and page_location ilike '%engaged.ca.gov%'
 ),
 
