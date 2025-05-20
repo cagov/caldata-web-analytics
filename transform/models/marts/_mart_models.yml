@@ -1,0 +1,26 @@
+models:
+  - name: ec__ca_cities_by_page_views
+    description: City and pageview data from users in CA and on engaged.ca.gov
+    columns:
+      - name: GEO_CITY
+        description: city name
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+
+  - name: ec__last_click_sources_by_page_views
+    description: Source and pageview data from users on engaged.ca.gov
+    columns:
+      - name: SOURCES
+        description: the origin of traffic to your site using a last-click attribution model
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+
+  - name: ec__total_users_and_page_views
+    description: User and pageview data from users in on engaged.ca.gov
+    columns:
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+      - name: TOTAL_USERS
+        description: total number of people who visited the site
+      - name: TOTAL_USERS_LA
+        description: total number of people who visited the site from Los Angeles
