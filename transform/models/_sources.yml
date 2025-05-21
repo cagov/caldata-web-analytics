@@ -9,41 +9,38 @@ sources:
     tables:
       - name: ANALYTICS_314711183__VIEW
         description: "Statewide GA property view"
-        config:
-          freshness:
-            warn_after:
-              count: 3
-              period: day
-            error_after:
-              count: 5
-              period: day
-            filter: datediff('day', event_date, current_timestamp) < 5
-          loaded_at_field: "event_date::timestamp"
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 5
+            period: day
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
 
       - name: ANALYTICS_322878501__VIEW
         description: "CA State Portal (https://www.ca.gov/) property view"
-        config:
-          freshness:
-            warn_after:
-              count: 3
-              period: day
-            error_after:
-              count: 5
-              period: day
-            filter: datediff('day', event_date, current_timestamp) < 5
-          loaded_at_field: "event_date::timestamp"
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 5
+            period: day
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
       - name: ANALYTICS_471611234__VIEW
         description: "Gov Ops(engaged.ca.gov) GA property data"
-        config:
-          freshness:
-            warn_after:
-              count: 3
-              period: day
-            error_after:
-              count: 5
-              period: day
-            filter: datediff('day', event_date, current_timestamp) < 5
-          loaded_at_field: "event_date::timestamp"
+        freshness:
+          warn_after:
+            count: 3
+            period: day
+          error_after:
+            count: 5
+            period: day
+          filter: datediff('day', event_date, current_timestamp) < 5
+        loaded_at_field: "event_date::timestamp"
   - name: calinnovate_dynamodb
     database: "{{ env_var('DBT_RAW_DB', 'RAW_PRD') }}"
     schema: calinnovate_dynamodb
