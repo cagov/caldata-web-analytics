@@ -1,10 +1,10 @@
-{% test ga4_data_gaps(model, column_name) %}
+{% test data_gaps(model, column_name, start_date, end_date) %}
 
 with date_range as (
     {{ dbt_utils.date_spine(
     datepart="day",
-    start_date= var('ga_data_start_date'),
-    end_date="current_date - 2"
+    start_date=start_date,
+    end_date=end_date
    )
 }}
 )
