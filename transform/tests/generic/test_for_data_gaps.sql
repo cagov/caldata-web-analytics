@@ -9,7 +9,7 @@ with date_range as (
 }}
 )
 
-select 
+select
 to_date(date_day) as date_day
 from date_range
 where date_day not in (select {{ column_name }} from {{ model }})
