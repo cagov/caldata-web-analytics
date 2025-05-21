@@ -1,4 +1,4 @@
-{% test data_gaps(model, column_name) %}
+{% test ga4_data_gaps(model, column_name) %}
 
 with date_range as (
     {{ dbt_utils.date_spine(
