@@ -1,7 +1,7 @@
 version: 2
 
 macros:
-  - name: get_custom_schema
+  - name: generate_schema_name
     description: |
       Returns the name of a schema in which a model should land in Snowflake.
 
