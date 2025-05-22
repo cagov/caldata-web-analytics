@@ -10,7 +10,6 @@ macros:
 
       For development models, the schema from `profiles.yml` will be prepended
       to the custom value found in `dbt_project.yml` or the model's config block.
-
     arguments:
       - name: custom_schema_name
         type: string
@@ -20,8 +19,6 @@ macros:
         type: string
         description: |
           The node that is currently being processed by dbt
-
-
   - name: get_snowflake_refresh_warehouse
     description: |
       Full refreshes of incremental models sometimes need a little bit of
