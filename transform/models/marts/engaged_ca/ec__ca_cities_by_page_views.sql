@@ -2,7 +2,7 @@ with source_data as (
     select * from {{ ref('ga__total_users_and_page_views') }}
     where
         event_date >= '2025-02-21' -- soft launch date
-        and page_location ilike '%engaged.ca.gov%'
+        and STARTSWITH(page_location, 'https://engaged.ca.gov')
 
 ),
 
@@ -13,7 +13,7 @@ cities_by_page_views as (
     from source_data
     where
         geo_region = 'California'
-        and length(trim(geo_city)) > 0
+        and LENGTH(TRIM(geo_city)) > 0
         and geo_city != '(not set)'
 
 )
