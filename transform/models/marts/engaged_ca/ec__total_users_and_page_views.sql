@@ -7,22 +7,17 @@ with source_data as (
 
 totals as (
     select
-        event_date,
         SUM(total_page_views) as total_page_views,
         SUM(total_users) as total_users
     from source_data
-    group by event_date
 
 ),
 
 la_totals as (
-    select
-        event_date as event_date_la,
-        SUM(total_users) as total_users_la
+    select SUM(total_users) as total_users_la
     from source_data
     where geo_city = 'Los Angeles'
-    group by event_date
 
 )
 
-select * exclude (event_date_la) from totals, la_totals -- noqa: RF02
+select * from totals, la_totals -- noqa: RF02

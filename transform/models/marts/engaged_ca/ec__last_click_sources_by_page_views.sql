@@ -7,11 +7,9 @@ with source_data as (
 
 last_click_sources_by_page_views as (
     select
-        event_date,
         last_click_sources as sources,
-        SUM(total_page_views) as total_page_views
+        total_page_views
     from source_data
-    group by event_date, sources
 
 )
 
