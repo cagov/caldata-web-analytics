@@ -7,6 +7,7 @@ with source_data as (
 
 totals as (
     select
+        MAX(event_date) as max_event_date,
         SUM(total_page_views) as total_page_views,
         SUM(total_users) as total_users
     from source_data

@@ -8,13 +8,15 @@ with source_data as (
 
 cities_by_page_views as (
     select
+        MAX(event_date) as max_event_date,
         geo_city,
-        total_page_views
+        SUM(total_page_views) as total_page_views
     from source_data
     where
         geo_region = 'California'
         and LENGTH(TRIM(geo_city)) > 0
         and geo_city != '(not set)'
+    group by geo_city
 
 )
 
