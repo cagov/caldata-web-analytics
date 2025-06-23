@@ -7,9 +7,11 @@ with source_data as (
 
 last_click_sources_by_page_views as (
     select
+        MAX(event_date) as max_event_date,
         last_click_sources as sources,
-        total_page_views
+        SUM(total_page_views) as total_page_views
     from source_data
+    group by sources
 
 )
 
