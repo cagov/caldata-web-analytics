@@ -13,6 +13,15 @@ last_click_sources_by_page_views as (
     from source_data
     group by sources
 
+),
+
+final as (
+    select
+        max_event_date,
+        sources,
+        total_page_views,
+        total_page_views * 1.0 / (SELECT SUM(total_page_views) FROM last_click_sources_by_page_views) as percent_of_total_page_views
+    from last_click_sources_by_page_views
 )
 
-select * from last_click_sources_by_page_views
+select * from final
