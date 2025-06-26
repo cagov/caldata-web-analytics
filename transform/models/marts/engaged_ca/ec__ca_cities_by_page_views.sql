@@ -18,6 +18,15 @@ cities_by_page_views as (
         and geo_city != '(not set)'
     group by geo_city
 
+),
+
+final as (
+    select
+        max_event_date,
+        geo_city,
+        total_page_views,
+        total_page_views / (select SUM(total_page_views) from cities_by_page_views) as percent_of_total_page_views
+    from cities_by_page_views
 )
 
-select * from cities_by_page_views
+select * from final
