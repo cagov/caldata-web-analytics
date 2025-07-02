@@ -7,7 +7,7 @@
 
 SELECT
     EVENT_DATE,
-    convert_timezone('UTC', 'America/Los_Angeles', to_timestamp(EVENT_TIMESTAMP / 1000))
+    convert_timezone('UTC', 'America/Los_Angeles', EVENT_TIMESTAMP)
         AS EVENT_TIMESTAMP_PST,
     EVENT_NAME,
     EVENT_PARAMS,
