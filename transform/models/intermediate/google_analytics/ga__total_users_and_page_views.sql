@@ -16,7 +16,6 @@ with source_data as (
     from {{ ref('stg_ga_statewide') }}
 ),
 
-
 key_metrics as (
     select
         event_date,

@@ -20,7 +20,7 @@ final as (
         max_event_date,
         sources,
         total_page_views,
-        total_page_views / (select SUM(total_page_views) from last_click_sources_by_page_views) as percent_of_total_page_views
+        total_page_views / (select SUM(l.total_page_views) from last_click_sources_by_page_views as l) as percent_of_total_page_views
     from last_click_sources_by_page_views
 )
 

@@ -25,7 +25,7 @@ final as (
         max_event_date,
         geo_city,
         total_page_views,
-        total_page_views / (select SUM(total_page_views) from cities_by_page_views) as percent_of_total_page_views
+        total_page_views / (select SUM(c.total_page_views) from cities_by_page_views as c) as percent_of_total_page_views
     from cities_by_page_views
 )
 

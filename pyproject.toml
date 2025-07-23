@@ -1,23 +1,21 @@
-[tool.poetry]
+[project]
 name = "caldata-web-analytics"
 package-mode = false
 version = "0.1.0"
-description = "\"User Journey Tracking\""
+description = "Web Analytics"
 authors = ["DSE <britt.allen@innovation.ca.gov>"]
 license = "MIT"
 readme = "README.md"
+requires-python = "==3.13.*"
+dependencies = [
+    "dbt-core~=1.10",
+    "dbt-snowflake~=1.10",
+    "mkdocs-material~=9.6.14",
+]
 
-[tool.poetry.dependencies]
-python = "^3.10"
-mkdocs-material = "~9.1.3"
-dbt-core = "~1.9.0"
-dbt-snowflake = "~1.9.0"
-
-[tool.poetry.group.dev.dependencies]
-pre-commit = "^3.3.1"
-sqlfluff = "3.0.7"
-sqlfluff-templater-dbt = "3.0.7"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "sqlfluff>=3.4.1",
+    "sqlfluff-templater-dbt>=3.4.1",
+]
