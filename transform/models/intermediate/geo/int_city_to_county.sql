@@ -40,8 +40,9 @@ SELECT
     IFF(
         city IN
         (
-            SELECT name FROM {{ ref('stg_tiger_places') }}
-            GROUP BY name HAVING COUNT(*) > 1
+            SELECT places.name FROM {{ ref('stg_tiger_places') }} AS places
+            GROUP BY places.name
+            HAVING COUNT(*) > 1
         ),
         1, 0
     ) AS is_dupe_city
