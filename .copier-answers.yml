@@ -1,5 +1,5 @@
 # Changes here will be overwritten by Copier
-_commit: 67d45ed
+_commit: cdb1adc
 _src_path: git@github.com:cagov/caldata-infrastructure-template.git
 dbt_profile_name: dse_snowflake
 email_address: britt.allen@innovation.ca.gov
