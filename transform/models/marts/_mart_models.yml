@@ -8,6 +8,8 @@ models:
         description: city name
       - name: TOTAL_PAGE_VIEWS
         description: total views to pages on the site
+      - name: PERCENT_OF_TOTAL_PAGE_VIEWS
+        description: percentage of total page views
 
   - name: ec__last_click_sources_by_page_views
     description: Source and pageview data from users on engaged.ca.gov
@@ -18,6 +20,8 @@ models:
         description: the origin of traffic to your site using a last-click attribution model
       - name: TOTAL_PAGE_VIEWS
         description: total views to pages on the site
+      - name: PERCENT_OF_TOTAL_PAGE_VIEWS
+        description: percentage of total page views
 
   - name: ec__total_users_and_page_views
     description: User and pageview data from users in on engaged.ca.gov
@@ -30,3 +34,17 @@ models:
         description: total number of people who visited the site
       - name: TOTAL_USERS_LA
         description: total number of people who visited the site from Los Angeles
+  - name: mart_br_widget
+    columns:
+      - name: EVENT_TIMESTAMP_PST
+      - name: DISPLAY_URL
+      - name: EVENT
+      - name: PAGE_URL
+      - name: PAGE_URL_ALIAS
+      - name: USER_AGENT
+      - name: LANGUAGE
+      - name: LINK
+      - name: LINK_ALIAS
+      - name: LINK_TEXT
+      - name: EXPERIMENT_NAME
+      - name: EXPERIMENT_VARIATION
