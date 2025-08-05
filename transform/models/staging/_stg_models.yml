@@ -7,10 +7,10 @@ models:
     columns:
       - name: EVENT_DATE
         description: The date when the event was logged
-        # data_tests:
-        #   - data_gaps:
-        #       start_date: "{{ var('ga_data_start_date') }}"
-        #       end_date: "current_date - 2"
+        data_tests:
+          - data_gaps:
+              start_date: "{{ var('ga_data_start_date') }}"
+              end_date: "current_date - 2"
       - name: EVENT_TIMESTAMP
         description: The time (in microseconds, UTC) when the event was logged
       - name: EVENT_NAME
