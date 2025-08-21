@@ -1,7 +1,7 @@
 with source_data as (
     select * from {{ ref('ga__total_users_and_page_views') }}
     where
-        event_date >= '2025-08-01' -- soft launch date
+        event_date >= '2025-08-01' -- e3 launch date
         and page_location rlike $$^https://engaged.ca.gov(/[\w-]+)?/stateemployees/.*$$
 ),
 
