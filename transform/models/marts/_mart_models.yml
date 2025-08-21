@@ -24,16 +24,33 @@ models:
         description: percentage of total page views
 
   - name: ec__total_users_and_page_views
-    description: User and pageview data from users in on engaged.ca.gov
+    description: User and pageview data from users on engaged.ca.gov
     columns:
       - name: MAX_EVENT_DATE
         description: date user interactions or system events occurred on the website
       - name: TOTAL_PAGE_VIEWS
         description: total views to pages on the site
       - name: TOTAL_USERS
-        description: total number of people who visited the site
+        description: >
+          total number of unique users who visited the site, see
+          [Google's docs](https://support.google.com/analytics/answer/12253918?hl=en)
       - name: TOTAL_USERS_LA
-        description: total number of people who visited the site from Los Angeles
+        description: >
+          total number of unique users who visited the site from Los Angeles, see
+          [Google's docs](https://support.google.com/analytics/answer/12253918?hl=en)
+
+  - name: ec__e3_total_users_and_page_views
+    description: User and pageview data from users on engaged.ca.gov/stateemployees
+    columns:
+      - name: MAX_EVENT_DATE
+        description: date user interactions or system events occurred on the website
+      - name: TOTAL_PAGE_VIEWS
+        description: total views to pages on the site
+      - name: TOTAL_USERS
+        description: >
+          total number of unique users who visited the site, see
+          [Google's docs](https://support.google.com/analytics/answer/12253918?hl=en)
+
   - name: mart_br_widget
     columns:
       - name: EVENT_TIMESTAMP_PST
