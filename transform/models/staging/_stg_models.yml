@@ -105,9 +105,9 @@ models:
           Source value (utm_source) captured on the user's first visit (google, bing,
           (direct))
       - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_SOURCE
-        description:
-          Last-click attribution campaign source value (utm_source) captured on the user's first visit (google, bing,
-          (direct))
+        description: >
+          Last-click attribution campaign source value (utm_source) captured on the
+          user's first visit (google, bing, (direct))
       # - name: STREAM_ID
       #   description: The numeric ID of the data stream from which the event originated
       # - name: PLATFORM
@@ -173,6 +173,97 @@ models:
         description: URL of the link clicked
       - name: LINK_DOMAIN
         description: Domain of the link clicked
+
+  - name: stg_ga_engaged_ca
+    description: >
+      Google Analytics data from the engaged.ca.gov property that has been flattened from
+      its original JSON form.
+    columns:
+      - name: EVENT_DATE
+        description: The date when the event was logged
+        data_tests:
+          - data_gaps:
+              arguments:
+                start_date: "{{ var('ga_data_start_date') }}"
+                end_date: "current_date - 2"
+      - name: EVENT_TIMESTAMP
+        description: The time (in microseconds, UTC) when the event was logged
+      - name: EVENT_NAME
+        description: The name of the event
+      - name: EVENT_PARAMS
+        description: Event parameter keys and values associated with the event
+      - name: USER_PSEUDO_ID
+        description: A pseudonymous id for the user
+      - name: DEVICE_CATEGORY
+        description: The device category (mobile, tablet, desktop, etc)
+      - name: DEVICE_LANGUAGE
+        description: >
+          The language set on the device operating system (ex: en-gb)
+      - name: DEVICE_WEB_INFO_HOSTNAME
+        description: The hostname of the website where the event was captured
+      - name: GEO_COUNTRY
+      - name: GEO_REGION
+      - name: GEO_CITY
+      - name: GEO_METRO
+      - name: TRAFFIC_SOURCE_NAME
+        description: >
+          Campaign name value (utm_campaign) captured on the user's first visit
+          ((organic), (direct))
+      - name: TRAFFIC_SOURCE_SOURCE
+        description: >
+          Source value (utm_source) captured on the user's first visit (google, bing,
+          (direct))
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_SOURCE
+        description: >
+          Last-click attribution campaign source value (utm_source) captured on the
+          user's first visit (google, bing, (direct))
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_CAMPAIGN_ID
+        description: Campaign id value (utm_id) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_CAMPAIGN_NAME
+        description: Campaign name value (utm_campaign) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_SOURCE
+        description: Source value (utm_source) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_MEDIUM
+        description: Medium value (utm_medium) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_TERM
+        description: Keyword/term (utm_term) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_CONTENT
+        description: Content value (utm_content) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_SOURCE_PLATFORM
+        description: Platform value (utm_source_platform) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_CREATIVE_FORMAT
+        description: Creative format value (utm_creative_format) collected with the event
+      - name: COLLECTED_TRAFFIC_SOURCE_MANUAL_MARKETING_TACTIC
+        description: Marketing tactic value (utm_marketing_tactic) collected with the event
+      - name: BATCH_EVENT_INDEX
+        description: Index of the event within the batch
+      - name: BATCH_PAGE_ID
+        description: Page ID associated with the batch event
+      - name: BATCH_ORDERING_ID
+        description: Ordering ID for batch processing
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_CAMPAIGN_ID
+        description: Last-click campaign ID (manual) for the session
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_CAMPAIGN_NAME
+        description: Last-click campaign name (manual) for the session
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_MEDIUM
+        description: Last-click campaign medium (manual) for the session
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_TERM
+        description: Last-click campaign term (manual) for the session
+      - name: SESSION_TRAFFIC_SOURCE_LAST_CLICK_MANUAL_CAMPAIGN_CONTENT
+        description: Last-click campaign content (manual) for the session
+      - name: EVENT_PARAMS__FLATTENED
+        description: Flattened event parameters
+      - name: PAGE_LOCATION
+        description: URL of the page where the event occurred
+      - name: PAGE_TITLE
+        description: Title of the page where the event occurred
+      - name: PAGE_REFERRER
+        description: Referrer URL for the page event
+      - name: LINK_URL
+        description: URL of the link clicked
+      - name: LINK_DOMAIN
+        description: Domain of the link clicked
+
   - name: stg_tiger_places
     description: California place (city) information from TIGER census dataset.
     columns:

@@ -40,13 +40,21 @@ models:
         description: total number of people who visited the site
 
   - name: int_ga_engaged_ca__events
-    description: Event types and their respective counts for the engaged.ca.gov property
+    description: >
+      Event counts associated with event types on engaged.ca.gov 
+      listed by page and their respective referrers
     columns:
+      - name: event_date
+        description: date user interactions or system events occurred on the website
       - name: event_name
         description: >
           the label of the type of automatically collected or custom event which get
           triggered by user interactions on the site
           [source](https://support.google.com/analytics/answer/9234069?sjid=12273265513162108866-NC)
+      - name: page_location_of_event
+        description: the page path of where the event user interaction was logged
+      - name: referral_source
+        description: the origin of traffic using a last-click attribution model
       - name: total_event_count
         description: total count of events per each distinct event name
 
