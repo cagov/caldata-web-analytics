@@ -11,7 +11,7 @@ models:
       - name: COUNTY_GNIS_CODE
       - name: IS_DUPE_CITY
 
-  - name: ga__last_click_sources_by_page_views
+  - name: int_ga_statewide__last_click_sources_by_page_views
     description: Last click source, website, and pageview data for all ca.gov properties
     columns:
       - name: EVENT_DATE
@@ -23,7 +23,7 @@ models:
       - name: TOTAL_PAGE_VIEWS
         description: total views to pages on the site
 
-  - name: ga__total_users_and_page_views
+  - name: int_ga_statewide__total_users_and_page_views
     description: Website, region, city, pageview, and user data for all ca.gov properties
     columns:
       - name: EVENT_DATE
@@ -38,6 +38,25 @@ models:
         description: total views to pages on the site
       - name: TOTAL_USERS
         description: total number of people who visited the site
+
+  - name: int_ga_engaged_ca__events
+    description: >
+      Event counts associated with event types on engaged.ca.gov
+      listed by page and their respective referrers
+    columns:
+      - name: event_date
+        description: date user interactions or system events occurred on the website
+      - name: event_name
+        description: >
+          the label of the type of automatically collected or custom event which get
+          triggered by user interactions on the site
+          [source](https://support.google.com/analytics/answer/9234069?sjid=12273265513162108866-NC)
+      - name: page_location_of_event
+        description: the page path of where the event user interaction was logged
+      - name: referral_source
+        description: the origin of traffic using a last-click attribution model
+      - name: total_event_count
+        description: total count of events per each distinct event name
 
   - name: int_br_widget
     columns:
