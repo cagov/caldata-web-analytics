@@ -41,7 +41,7 @@ models:
 
   - name: int_ga_engaged_ca__events
     description: >
-      Event counts associated with event types on engaged.ca.gov 
+      Event counts associated with event types on engaged.ca.gov
       listed by page and their respective referrers
     columns:
       - name: event_date

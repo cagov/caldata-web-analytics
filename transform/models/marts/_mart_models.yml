@@ -53,7 +53,7 @@ models:
 
   - name: ec__events_form_submit
     description: >
-      Event counts associated with form submits on engaged.ca.gov 
+      Event counts associated with form submits on engaged.ca.gov
       listed by page and their respective referrers
     columns:
       - name: page_location_of_event
