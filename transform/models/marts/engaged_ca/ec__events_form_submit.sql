@@ -5,12 +5,20 @@ with source as (
 form_submits as (
     select
         case
-            when page_location rlike $$^https://engaged.ca.gov(/[\w-]+)?/stateemployees/.*$$ then '/stateemployees'
-            when page_location rlike $$^https://engaged.ca.gov(/[\w-]+)?/|^https://engaged.ca.gov(/[\w-]+)?/.*fbclid=.*$$ then '/'
-            when page_location rlike $$^https://engaged.ca.gov(/[\w-]+)?/lafires-recovery/.*$$ then 'lafires-recovery'
+            when page_location like 'https://engaged.ca.gov%'
+                then
+                    case
+                        -- handle root and short urls
+                        when len(page_location) <= 23 then '/'
+                        -- handle known programs
+                        when contains(page_location, '/stateemployees/') then '/stateemployees'
+                        when contains(page_location, '/lafires-recovery/') then 'lafires-recovery'
+                        -- handle facebook click ids
+                        when contains(page_location, 'fbclid=') then '/'
+                        else page_location
+                    end
             else page_location
-        end
-            as page_location_of_event,
+        end as page_location_of_event,
         referral_source,
         total_event_count
     from source

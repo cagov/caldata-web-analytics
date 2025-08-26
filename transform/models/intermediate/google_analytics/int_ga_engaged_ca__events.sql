@@ -10,7 +10,7 @@ events_and_counts as (
         session_traffic_source_last_click_manual_campaign_source as referral_source,
         count(event_name) as total_event_count
     from source
-    where page_location not rlike $$^http://localhost/.*$$
+    where page_location not like 'http://localhost/%' and page_location not like '%jbum%'
     group by event_date, event_name, page_location, referral_source
 )
 
