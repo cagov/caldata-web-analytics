@@ -11,13 +11,15 @@ form_submits as (
                         -- handle root and short urls
                         when len(page_location) <= 23 then '/'
                         -- handle known programs
-                        when contains(page_location, '/stateemployees/') then '/stateemployees'
-                        when contains(page_location, '/lafires-recovery/') then 'lafires-recovery'
+                        when contains(page_location, '/stateemployees/') then split_part(page_location, '?', 1)
+                        when contains(page_location, '/agenda-setting-findings/') then split_part(page_location, '?', 1)
+                        when contains(page_location, '/agenda-setting-data-insights/') then split_part(page_location, '?', 1)
+                        when contains(page_location, '/lafires-recovery/') then split_part(page_location, '?', 1)
                         -- handle facebook click ids
                         when contains(page_location, 'fbclid=') then '/'
-                        else page_location
+                        else split_part(page_location, '?', 1)
                     end
-            else page_location
+            else split_part(page_location, '?', 1)
         end as page_location_of_event,
         referral_source,
         total_event_count
