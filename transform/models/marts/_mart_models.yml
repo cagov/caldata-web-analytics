@@ -51,6 +51,18 @@ models:
           total number of unique users who visited the site, see
           [Google's docs](https://support.google.com/analytics/answer/12253918?hl=en)
 
+  - name: ec__events_form_submit
+    description: >
+      Event counts associated with form submits on engaged.ca.gov's homepage,
+      LA Fires page, and State Employees page, listed by page and respective referrers
+    columns:
+      - name: page_location_of_event
+        description: the page path of where the form submit happened
+      - name: referral_source
+        description: the origin of traffic using a last-click attribution model
+      - name: total_event_count
+        description: total count of form submit events
+
   - name: mart_br_widget
     columns:
       - name: EVENT_TIMESTAMP_PST
