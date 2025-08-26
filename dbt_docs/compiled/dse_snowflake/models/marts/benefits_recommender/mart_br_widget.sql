@@ -1,0 +1,2 @@
+SELECT *
+FROM ANALYTICS_PRD.benefits_recommender.int_br_widget
