@@ -36,7 +36,7 @@ vars:
 
 models:
   dse_snowflake:
-    +begin: "{{ '2022-10-31' if target.name == 'prd' and model.name == 'stg_ga_statewide' else '2025-02-21' if target.name == 'prd' and model.name == 'stg_ga_engaged_ca' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
+    +begin: "{{ '2022-10-31' if target.name == 'prd' and model.name == 'stg_ga_statewide' else '2025-02-21' if target.name == 'prd' and model.name == 'stg_ga_engaged_ca' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}" # yamllint disable-line rule:line-length
     +batch_size: day
     +lookback: 7
     staging:
