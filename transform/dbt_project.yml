@@ -42,7 +42,7 @@ models:
       {% elif target.name == 'prd' and model.name == 'stg_ga_engaged_ca' %}
         '2025-02-21'
       {% else %}
-        (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat()
+        {{ (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}
       {% endif %}
     +batch_size: day
     +lookback: 7
