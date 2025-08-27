@@ -51,7 +51,7 @@ models:
           the label of the type of automatically collected or custom event which get
           triggered by user interactions on the site
           [source](https://support.google.com/analytics/answer/9234069?sjid=12273265513162108866-NC)
-      - name: page_location_of_event
+      - name: page_location
         description: the page path of where the event user interaction was logged
       - name: referral_source
         description: the origin of traffic using a last-click attribution model
