@@ -36,14 +36,7 @@ vars:
 
 models:
   dse_snowflake:
-    +begin: >-
-      {% if target.name == 'prd' and model.name == 'stg_ga_statewide' %}
-        '2022-10-31'
-      {% elif target.name == 'prd' and model.name == 'stg_ga_engaged_ca' %}
-        '2025-02-21'
-      {% else %}
-        '{{ (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}'
-      {% endif %}
+    +begin: "{{ '2022-10-31' if target.name == 'prd' and model.name == 'stg_ga_statewide' else '2025-02-21' if target.name == 'prd' and model.name == 'stg_ga_engaged_ca' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
     +batch_size: day
     +lookback: 7
     staging:
