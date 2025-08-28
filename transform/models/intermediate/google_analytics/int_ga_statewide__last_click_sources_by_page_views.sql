@@ -1,4 +1,4 @@
-{% set begin_date = '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+{% set begin_date = ga_statewide_start_date if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
 
 {{ config(
     materialized='incremental',

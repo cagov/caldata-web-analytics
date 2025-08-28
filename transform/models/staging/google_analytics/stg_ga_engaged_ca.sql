@@ -1,4 +1,4 @@
-{% set begin_date = '2025-02-21' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+{% set begin_date = ga_engaged_ca_start_date if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
 
 {{ config(
     materialized='incremental',
