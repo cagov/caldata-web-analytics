@@ -32,9 +32,9 @@ vars:
   # (this excludes the pilot program)
   br_widget_start_date: "'2023-11-16'"
   # First date of the GA4 Statewide BigQuery dataset
-  ga_statewide_start_date: "'2022-10-31'"
+  ga_statewide_beg_date: "'2022-10-31'"
   # Soft launch of Engaged CA
-  ga_engaged_ca_start_date: "'2025-02-21'"
+  ga_ec_beg_date: "'2025-02-21'"
 
 models:
   dse_snowflake:
