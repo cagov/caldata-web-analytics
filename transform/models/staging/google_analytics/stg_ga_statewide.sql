@@ -1,10 +1,12 @@
+{% set begin_date = '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='EVENT_DATE',
-    begin="{{ '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
-    batch_size='day'
-    snowflake_warehouse = get_snowflake_refresh_warehouse(big="XL", small="XS")
+    begin=begin_date,
+    batch_size='day',
+    snowflake_warehouse=get_snowflake_refresh_warehouse(big="XL", small="XS")
 ) }}
 
 SELECT
