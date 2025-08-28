@@ -2,6 +2,8 @@
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='EVENT_DATE',
+    begin="{{ '2025-02-21' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
+    batch_size='day'
     snowflake_warehouse = get_snowflake_refresh_warehouse(big="XL", small="XS")
 ) }}
 
