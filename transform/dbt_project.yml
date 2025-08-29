@@ -31,13 +31,13 @@ vars:
   # The date when the benefits recommender widget was put into production
   # (this excludes the pilot program)
   br_widget_start_date: "'2023-11-16'"
-  # First date of the GA4 BigQuery dataset
-  ga_data_start_date: "'2022-10-31'"
+  # First date of the GA4 Statewide BigQuery dataset
+  ga_statewide_beg_date: "'2022-10-31'"
+  # Soft launch of Engaged CA
+  ga_ec_beg_date: "'2025-02-21'"
 
 models:
   dse_snowflake:
-    +begin: "{{ '2022-10-31' if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(7)).isoformat() }}"
-    +batch_size: day
     +lookback: 7
     staging:
       +materialized: view

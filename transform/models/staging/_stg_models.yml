@@ -10,7 +10,7 @@ models:
         data_tests:
           - data_gaps:
               arguments:
-                start_date: "{{ var('ga_data_start_date') }}"
+                start_date: "{{ var('ga_statewide_beg_date') }}"
                 end_date: "current_date - 2"
       - name: EVENT_TIMESTAMP
         description: The time (in microseconds, UTC) when the event was logged

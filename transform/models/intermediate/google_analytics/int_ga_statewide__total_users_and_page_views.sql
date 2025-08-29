@@ -1,7 +1,11 @@
+{% set dt = ga_statewide_beg_date if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='EVENT_DATE',
+    begin=dt,
+    batch_size='day',
     snowflake_warehouse = get_snowflake_refresh_warehouse(big="XL", small="XS")
 ) }}
 

@@ -1,8 +1,12 @@
+{% set dt = ga_ec_beg_date if target.name == 'prd' else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+
 {{ config(
     materialized='incremental',
     incremental_strategy='microbatch',
     event_time='EVENT_DATE',
-    snowflake_warehouse = get_snowflake_refresh_warehouse(big="XL", small="XS")
+    begin=dt,
+    batch_size='day',
+    snowflake_warehouse=get_snowflake_refresh_warehouse(big="XL", small="XS")
 ) }}
 
 SELECT
