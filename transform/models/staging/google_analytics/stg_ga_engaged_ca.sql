@@ -1,5 +1,8 @@
-{% set dt = var('ga_ec_beg_date') if target.name == 'prd'
-else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat() %}
+{% set dt = (
+    var('ga_ec_beg_date')
+    if target.name == 'prd'
+    else (modules.datetime.datetime.now() - modules.datetime.timedelta(days=7)).isoformat()
+) %}
 
 {{ config(
     materialized='incremental',
