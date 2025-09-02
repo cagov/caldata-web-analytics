@@ -27,14 +27,17 @@ clean-targets: # directories to be removed by `dbt clean`
   - target
   - dbt_packages
 
+on-run-start:
+  - "{{ log('Project vars -> ' ~ tojson(var()), info=True) }}"
+
 vars:
   # The date when the benefits recommender widget was put into production
   # (this excludes the pilot program)
   br_widget_start_date: "'2023-11-16'"
   # First date of the GA4 Statewide BigQuery dataset
-  ga_statewide_beg_date: "'2022-10-31'"
+  ga_statewide_beg_date: "2022-10-31T00:00:00Z"
   # Soft launch of Engaged CA
-  ga_ec_beg_date: "'2025-02-21'"
+  ga_ec_beg_date: "2025-02-21T00:00:00Z"
 
 models:
   dse_snowflake:
