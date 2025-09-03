@@ -4,6 +4,7 @@ with source as (
 
 form_submits as (
     select
+        event_date,
         case
             when page_location like 'https://engaged.ca.gov%'
                 then
@@ -22,7 +23,7 @@ form_submits as (
             else split_part(page_location, '?', 1)
         end as page_location_of_event,
         referral_source,
-        total_event_count
+        sum(total_event_count) as total_event_count
     from source
     where
         event_date >= '2025-02-21' -- engaged.ca.gov soft launch date
