@@ -28,7 +28,7 @@ form_submits as (
     where
         event_date >= '2025-02-21' -- engaged.ca.gov soft launch date
         and event_name = 'form_submit'
-    group by all
+    group by event_date, page_location_of_event, referral_source
 
 )
 
