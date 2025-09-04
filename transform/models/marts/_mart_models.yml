@@ -56,6 +56,8 @@ models:
       Event counts associated with form submits on engaged.ca.gov's homepage,
       LA Fires page, and State Employees page, listed by page and respective referrers
     columns:
+      - name: event_date
+        description: date user interactions or system events occurred on the website
       - name: page_location_of_event
         description: the page path of where the form submit happened
       - name: referral_source
