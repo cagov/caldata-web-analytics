@@ -16,6 +16,6 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pre-commit>=4.2.0",
-    "sqlfluff>=3.4.1",
+    "sqlfluff>=4.2.0",
     "sqlfluff-templater-dbt>=3.4.1",
 ]
