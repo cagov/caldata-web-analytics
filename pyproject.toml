@@ -19,3 +19,6 @@ dev = [
     "sqlfluff>=3.4.1",
     "sqlfluff-templater-dbt>=3.4.1",
 ]
+
+[tool.uv]
+exclude-newer = "1 week"
