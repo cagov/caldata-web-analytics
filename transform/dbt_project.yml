@@ -6,7 +6,11 @@ config-version: 2
 flags:
   send_anonymous_usage_stats: false
   use_colors: true
-  warn_error: true
+  warn_error_options:
+    error: all
+    silence:
+      - NoNodesForSelectionCriteria
+      - NoNodesSelected
   require_generic_test_arguments_property: True
 
 # This setting configures which "profile" dbt uses for this project.
