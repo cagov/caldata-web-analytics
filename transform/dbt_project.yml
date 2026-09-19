@@ -11,6 +11,7 @@ flags:
     silence:
       - NoNodesForSelectionCriteria
       - NoNodesSelected
+      - NothingToDo
   require_generic_test_arguments_property: True
 
 # This setting configures which "profile" dbt uses for this project.
