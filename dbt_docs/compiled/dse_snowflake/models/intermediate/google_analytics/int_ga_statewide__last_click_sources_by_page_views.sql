@@ -1,0 +1,24 @@
+
+
+
+
+with source_data as (
+    select
+        event_date,
+        session_traffic_source_last_click_manual_campaign_source,
+        event_name,
+        page_location
+    from ANALYTICS_PRD.google_analytics.stg_ga_statewide
+),
+
+last_click_sources_by_page_views as (
+    select
+        event_date,
+        page_location,
+        session_traffic_source_last_click_manual_campaign_source as last_click_sources,
+        count_if(event_name = 'page_view') as total_page_views
+    from source_data
+    group by event_date, page_location, last_click_sources
+)
+
+select * from last_click_sources_by_page_views
